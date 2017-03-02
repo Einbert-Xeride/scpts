@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ DOCPREFIX }}-{{ pid }}的编辑历史 - {{ super() }}{% endblock %}
+
+{% block page_header %}{{ DOCPREFIX }}-{{ pid }} 的编辑历史{% endblock %}
+
+{% block page_content %}
+    <p><a href="{{ url_for('page', pid=pid) }}">&lt; 返回</a></p>
+    <ul>
+        {% for edit in edits %}
+            <li><a href="{{ url_for('edit', eid=edit.eid) }}">{{ edit.title }}</a>，由 <a href="{{ url_for('user', uid=edit.uid) }}">{{ edit.nick }}</a> 在 {{ moment(edit.post_at).fromNow() }} 编辑</li>
+        {% endfor %}
+    </ul>
+{% endblock page_content %}

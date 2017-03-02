@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block page_header %}SCP 基金会 TS 部门中文资料{% endblock %}
+
+{% block page_content %}
+    <p>共 {{ pages_count }} 篇文档和 {{ users_count }} 名用户。
+        <label for="new-doc-pid">文档编号：</label>{{ DOCPREFIX }}-<input id="new-doc-pid" type="text" placeholder="001">
+        <button type="button" onclick="window.location.href = '/page/' + $('#new-doc-pid').val() + '/edit'">创建或编辑文档</button>
+    </p>
+    <ul id="page-list">
+        {% for page in pages %}
+            <li><a href="{{ url_for('page', pid=page.pid) }}">{{ page.pid }} - {{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock page_content %}

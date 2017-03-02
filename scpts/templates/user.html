@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}{{ user.nick }} - 用户资料 - {{ super() }}{% endblock %}
+
+{% block page_header %}{{ user.nick }} - 用户资料{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-md-4">
+            <dl>
+                <dt>UID</dt><dd>{{ user.uid }}</dd>
+                <dt>昵称</dt><dd>{{ user.nick }}</dd>
+                <dt>注册时间</dt><dd>{{ moment(user.member_since).format('LLL') }}</dd>
+            </dl>
+        </div>
+        {% if current_user.uid == user.uid %}
+            <div class="col-md-4">
+                {{ wtf.quick_form(form_nick) }}
+            </div>
+            <div class="col-md-4">
+                {{ wtf.quick_form(form_pwd) }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock page_content %}

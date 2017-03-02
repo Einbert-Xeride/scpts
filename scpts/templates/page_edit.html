@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}编辑{{ DOCPREFIX }}-{{ pid }} - {{ super() }}{% endblock %}
+
+{% block page_header %}编辑{{ DOCPREFIX }}-{{ pid }}{% endblock %}
+
+{% block page_content %}
+    <p><a href="{{ url_for('page', pid=pid) }}">&lt; 返回</a> <em>支持使用 Markdown 格式</em></p>
+    <div class="col-md-12">
+        {{ wtf.quick_form(form) }}
+    </div>
+{% endblock page_content %}

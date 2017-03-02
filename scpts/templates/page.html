@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ DOCPREFIX }}-{{ pid }} - {{ page.title }} - {{ super() }}{% endblock %}
+
+{% block page_header %}{{ DOCPREFIX }}-{{ pid }} - {{ page.title }}{% endblock %}
+
+{% block page_content %}
+    <p class="float-right"><a href="{{ url_for('page_edit', pid=pid) }}">编辑</a>·<a href="{{ url_for('page_list_edit', pid=pid) }}">历史</a></p>
+    <div class="markdown">
+        {{ page.content_parsed | safe }}
+    </div>
+{% endblock page_content %}

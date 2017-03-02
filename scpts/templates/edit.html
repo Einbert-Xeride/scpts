@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ DOCPREFIX }}-{{ edit.pid }} - {{ edit.title }} - {{ super() }}{% endblock %}
+
+{% block page_header %}{{ DOCPREFIX }}-{{ edit.pid }} - {{ edit.title }}{% endblock %}
+
+{% block flash_messages %}
+    {{ super() }}
+                <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    这是 {{ DOCPREFIX }}-{{ edit.pid }} 在 {{ moment(edit.post_at).format('LLL') }} 的版本
+                </div>
+{% endblock flash_messages %}
+
+{% block page_content %}
+    <p><a href="{{ url_for('page', pid=edit.pid) }}">&lt; 返回</a></p>
+    <div class="markdown">
+        {{ edit.content_parsed | safe }}
+    </div>
+{% endblock page_content %}
