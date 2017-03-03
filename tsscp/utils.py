@@ -7,7 +7,8 @@ from . import consts as c
 
 def md2html(md: str):
     allowed_tags = ('a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
-                    'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p')
+                    'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'table', 'tr', 'td', 'thead', 'tbody', 'th', 'sub', 'sup',
+                    'del')
     return bleach.linkify(bleach.clean(markdown(md, output_format='html'), tags=allowed_tags, strip=True))
 
 
