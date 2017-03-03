@@ -15,7 +15,7 @@ def md2html(md: str):
 def check_pid(pid):
     return _pid_check_re.match(pid) is not None and len(pid) < c.PID_MAX_LENGTH
 
-_pid_check_re = re.compile('^[A-Za-z0-9_]+$')
+_pid_check_re = re.compile('^[-A-Za-z0-9_]+$')
 
 
 def check_pid_or_404(pid):
