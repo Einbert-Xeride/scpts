@@ -26,7 +26,7 @@ pagedown = PageDown(app)
 bootstrap = Bootstrap(app)
 
 
-app.add_template_global('SCPTS', 'DOCPREFIX')
+app.add_template_global('TSSCP', 'DOCPREFIX')
 
 
 login_manager.session_protection = 'strong'
