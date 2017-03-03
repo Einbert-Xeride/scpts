@@ -83,7 +83,12 @@ def edit_page(pid, title, content):
 
 
 def list_page():
-    pages = db.session.query(Page.pid, Edit.title).join(Edit).order_by(Page.pid).all()
+    edit_alias = db.aliased(Edit)
+    pages = db.session.query(Page.pid, Edit.title)\
+        .join(Edit)\
+        .order_by(Page.pid)\
+        .filter(db.not_(db.session.query(edit_alias.post_at).filter(edit_alias.pid == Page.pid, edit_alias.post_at > Edit.post_at).exists()))\
+        .all()
     return [PageListItem(*page) for page in pages]
 
 PageListItem = namedtuple('PageListItem', ('pid', 'title'))

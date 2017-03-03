@@ -9,7 +9,7 @@
     </p>
     <ul id="page-list">
         {% for page in pages %}
-            <li><a href="{{ url_for('page', pid=page.pid) }}">{{ page.pid }} - {{ page.title }}</a></li>
+            <li><a href="{{ url_for('page', pid=page.pid) }}">{{ DOCPREFIX }}-{{ page.pid }} - {{ page.title }}</a></li>
         {% endfor %}
     </ul>
 {% endblock page_content %}

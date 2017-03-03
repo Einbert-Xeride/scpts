@@ -12,7 +12,7 @@ from getpass import getpass
 
 class Config:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data.db')
-    SQLALCHEMY_ECHO = (os.environ.get('FLASK_DEBUG') == 1)
+    SQLALCHEMY_ECHO = (os.environ.get('FLASK_DEBUG') == '1')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
